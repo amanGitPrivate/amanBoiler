@@ -2,9 +2,11 @@ import React from 'react';
 import _ from 'lodash';
 import ItemRow from '../../ui/Row.jsx';
 import OverLayComponent from '../../ui/Layout.jsx';
+import Sort from '../../ui/Sort.jsx';
 import dataCart from '../../../json/Cart.json';
 import {showLoadingOverlay} from '../../../actions/index';
 import { connect } from 'react-redux'
+import Slider from 'react-slick';
 
 class HomePage extends React.Component {
 
@@ -91,6 +93,9 @@ class HomePage extends React.Component {
     this.props.showLoadingOverlay();
   }
   render(){
+    var settings = {
+     dots: true
+   };
     console.log('this.state.data', this.state.data);
     return (
       <div className="shopingBagContainer">
@@ -99,6 +104,13 @@ class HomePage extends React.Component {
           <span className="headerText noOfItems">{this.state.data.length}</span>
           <span className="headerText"> ITEMS</span>
         </div>
+        <Slider {...settings}>
+          <div><img src='http://placekitten.com/g/400/200' /></div>
+              <div><img src='http://placekitten.com/g/400/200' /></div>
+              <div><img src='http://placekitten.com/g/400/200' /></div>
+              <div><img src='http://placekitten.com/g/400/200' /></div>
+      </Slider>
+       <Sort />
         {this.state.data.length > 0 ?
           <div>
             <section className="itemsContainer">
